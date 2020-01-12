@@ -1,0 +1,60 @@
+{
+  "name": "@tommydunn/retweet-bot",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Tommy Dunn",
+  "main": "src/retweet-bot/retweet-bot.js",
+  "bin": {
+    "retweet-bot": "bin/retweet-bot.js"
+  },
+  "scripts": {
+    "docs": "jsdoc src/retweet-bot/retweet-bot.js -p -d dist/docs/",
+    "setup": "mkdir -p dist/",
+    "build": "npm run setup && npm run js",
+    "watch": "npm run build && npm run watch:js",
+    "js": "browserify src/retweet-bot/retweet-bot.js -o dist/retweet-bot.js && browserify -r ./src/retweet-bot/retweet-bot.js:retweet-bot > dist/retweet-bot.debug.js",
+    "watch:js": "onchange 'src/**/*.js' -- npm run js",
+    "test": "mocha-phantomjs -R dot test/spec/index.html",
+    "test:browser": "open test/spec/index.html",
+    "example": "open test/examples/index.html"
+  },
+  "dependencies": {
+    "lodash": "latest",
+    "twit": "^2.2.5",
+    "twitter": "^1.7.0"
+  },
+  "devDependencies": {
+    "browserify": "^12.0.1",
+    "chai": "^3.4.1",
+    "chai-as-promised": "^5.2.0",
+    "onchange": "^2.0.0",
+    "jsdoc": "^3.4.0",
+    "mocha": "^2.3.4",
+    "mocha-phantomjs": "^4.0.2",
+    "rsvp": "^3.2.1"
+  },
+  "bugs": {
+    "url": "https://github.com/tommydunn/retweet-bot/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tommydunn/retweet-bot"
+  },
+  "homepage": "https://github.com/tommydunn/retweet-bot",
+  "contributors": [
+    ""
+  ],
+  "xo": {
+    "globals": [
+      "document",
+      "window",
+      "require",
+      "module"
+    ]
+  },
+  "keywords": [],
+  "engines": {
+    "node": ">=0.10.3"
+  },
+  "license": "MIT"
+}
